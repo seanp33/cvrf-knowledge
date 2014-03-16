@@ -1,0 +1,8 @@
+SYSTEM "http://dublincore.org/schemas/xmls/qdc/2008/02/11/dc.xsd" "etc/dc.xsd"
+SYSTEM "http://www.icasi.org/CVRF/schema/vuln/1.1/vuln.xsd" "etc/vuln.xsd"
+SYSTEM "http://www.icasi.org/CVRF/schema/common/1.1/common.xsd" "etc/common.xsd"
+SYSTEM "http://www.icasi.org/CVRF/schema/prod/1.1/prod.xsd" "etc/prod.xsd"
+SYSTEM "http://scap.nist.gov/schema/cvss-v2/1.0/cvss-v2_0.9.xsd" "etc/cvss-v2_0.9.xsd"
+SYSTEM "http://scap.nist.gov/schema/scap-core/1.0/scap-core_0.9.xsd" "etc/scap-core_0.9.xsd"
+SYSTEM "http://scap.nist.gov/schema/cpe/2.0/cpe-language_2.2a.xsd" "etc/cpe-language_2.2a.xsd"
+SYSTEM "http://www.w3.org/2001/xml.xsd" "etc/xml.xsd"
