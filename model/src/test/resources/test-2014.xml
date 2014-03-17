@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<cvrfdoc xmlns:cvrf="http://www.icasi.org/CVRF/schema/cvrf/1.1" xmlns="http://www.icasi.org/CVRF/schema/cvrf/1.1"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.icasi.org/CVRF/schema/cvrf/1.1 http://www.icasi.org/CVRF/schema/cvrf/1.1/cvrf.xsd">
+<DocumentTitle xml:lang="en">CVE Output in CVRF 1.1: 20140314</DocumentTitle>
+<DocumentType>CVE List</DocumentType>
+<DocumentPublisher Type="Other">
+<ContactDetails>cve@mitre.org</ContactDetails>
+<IssuingAuthority>The MITRE Corporation</IssuingAuthority>
+</DocumentPublisher>
+<DocumentTracking>
+<Identification><ID>20140314-060812</ID></Identification>
+<Status>Interim</Status>
+<Version>2014.3.14.6</Version>
+<RevisionHistory>
+<Revision>
+<Number>1</Number>
+<Date>2014-03-14T06:08:12</Date>
+<Description>initial public release</Description></Revision>
+</RevisionHistory>
+<InitialReleaseDate>2014-03-14T06:08:12</InitialReleaseDate>
+<CurrentReleaseDate>2014-03-14T06:08:12</CurrentReleaseDate>
+<Generator><Engine>MITRE Custom CVE-to-CVRF Converter 1.3</Engine></Generator>
+</DocumentTracking>
+<DocumentNotes>
+<Note Type="General" Ordinal="1" Title="CVE List" Audience="All">This is a list of CVE Identifiers as published by MITRE.</Note>
+<Note Type="General" Ordinal="2" Title="License" Audience="All">The MITRE Corporation (MITRE) hereby grants you a non-exclusive,
+royalty-free license to use Common Vulnerabilities and Exposures (CVE
+(R)) for research, development, and commercial purposes. Any copy you
+make for such purposes is authorized provided that you reproduce
+MITRE&apos;s copyright designation and this license in any such copy.</Note>
+<Note Type="General" Ordinal="3" Title="Disclaimers" Audience="All">ALL DOCUMENTS AND THE INFORMATION CONTAINED THEREIN ARE PROVIDED ON
+AN &quot;AS IS&quot; BASIS AND THE CONTRIBUTOR, THE ORGANIZATION HE/SHE
+REPRESENTS OR IS SPONSORED BY (IF ANY), THE MITRE CORPORATION, ITS
+BOARD OF TRUSTEES, OFFICERS, AGENTS, AND EMPLOYEES, DISCLAIM ALL
+WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY
+WARRANTY THAT THE USE OF THE INFORMATION THEREIN WILL NOT INFRINGE ANY
+RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A
+PARTICULAR PURPOSE.</Note>
+</DocumentNotes>
+<Vulnerability xmlns="http://www.icasi.org/CVRF/schema/vuln/1.1" Ordinal="67092">
+<Title>CVE-2014-0001</Title>
+<Notes><Note Type="Description" Ordinal="1">Buffer overflow in client/mysql.cc in Oracle MySQL and MariaDB before
+5.5.35 allows remote database servers to cause a denial of service
+(crash) and possibly execute arbitrary code via a long server version
+string.
+</Note>
+<Note Type="Other" Ordinal="2" Title="Published">2014-01-31</Note>
+<Note Type="Other" Ordinal="3" Title="Modified">2014-03-03</Note>
+</Notes>
+<CVE>CVE-2014-0001</CVE>
+	<References>
+	<Reference>
+		<URL>http://bazaar.launchpad.net/~maria-captains/maria/5.5/revision/2502.565.64</URL>
+		<Description>CONFIRM:http://bazaar.launchpad.net/~maria-captains/maria/5.5/revision/2502.565.64</Description>
+	</Reference>
+	<Reference>
+		<URL>https://bugzilla.redhat.com/show_bug.cgi?id=1054592</URL>
+		<Description>CONFIRM:https://bugzilla.redhat.com/show_bug.cgi?id=1054592</Description>
+	</Reference>
+	<Reference>
+		<URL>https://mariadb.com/kb/en/mariadb-5535-changelog/</URL>
+		<Description>CONFIRM:https://mariadb.com/kb/en/mariadb-5535-changelog/</Description>
+	</Reference>
+	<Reference>
+		<URL>http://rhn.redhat.com/errata/RHSA-2014-0164.html</URL>
+		<Description>REDHAT:RHSA-2014:0164</Description>
+	</Reference>
+	<Reference>
+		<URL>http://rhn.redhat.com/errata/RHSA-2014-0173.html</URL>
+		<Description>REDHAT:RHSA-2014:0173</Description>
+	</Reference>
+	<Reference>
+		<URL>http://rhn.redhat.com/errata/RHSA-2014-0186.html</URL>
+		<Description>REDHAT:RHSA-2014:0186</Description>
+	</Reference>
+	<Reference>
+		<URL>http://rhn.redhat.com/errata/RHSA-2014-0189.html</URL>
+		<Description>REDHAT:RHSA-2014:0189</Description>
+	</Reference>
+	<Reference>
+		<URL>http://osvdb.org/102713</URL>
+		<Description>OSVDB:102713</Description>
+	</Reference>
+	<Reference>
+		<URL>http://www.osvdb.org/102714</URL>
+		<Description>OSVDB:102714</Description>
+	</Reference>
+</References>
+</Vulnerability>
+<Vulnerability xmlns="http://www.icasi.org/CVRF/schema/vuln/1.1" Ordinal="67093">
+<Title>CVE-2014-0002</Title>
+<Notes><Note Type="Description" Ordinal="1">** RESERVED **
+This candidate has been reserved by an organization or individual that
+will use it when announcing a new security problem.  When the
+candidate has been publicized, the details for this candidate will be
+provided.
+</Note>
+</Notes>
+<CVE>CVE-2014-0002</CVE>
+</Vulnerability>
+<Vulnerability xmlns="http://www.icasi.org/CVRF/schema/vuln/1.1" Ordinal="67094">
+<Title>CVE-2014-0003</Title>
+<Notes><Note Type="Description" Ordinal="1">** RESERVED **
+This candidate has been reserved by an organization or individual that
+will use it when announcing a new security problem.  When the
+candidate has been publicized, the details for this candidate will be
+provided.
+</Note>
+</Notes>
+<CVE>CVE-2014-0003</CVE>
+</Vulnerability>
+<Vulnerability xmlns="http://www.icasi.org/CVRF/schema/vuln/1.1" Ordinal="67095">
+<Title>CVE-2014-0004</Title>
+<Notes><Note Type="Description" Ordinal="1">Stack-based buffer overflow in udisks before 1.0.5 and 2.x before
+2.1.3 allows local users to cause a denial of service (crash) and
+possibly execute arbitrary code via a long mount point.
+</Note>
+<Note Type="Other" Ordinal="2" Title="Published">2014-03-11</Note>
+<Note Type="Other" Ordinal="3" Title="Modified">2014-03-11</Note>
+</Notes>
+<CVE>CVE-2014-0004</CVE>
+	<References>
+	<Reference>
+		<URL>http://lists.freedesktop.org/archives/devkit-devel/2014-March/001568.html</URL>
+		<Description>MLIST:[devkit-devel] 20140310 udisks 2.1.3 / 1.0.5 security updates</Description>
+	</Reference>
+	<Reference>
+		<URL>http://www.ubuntu.com/usn/USN-2142-1</URL>
+		<Description>UBUNTU:USN-2142-1</Description>
+	</Reference>
+</References>
+</Vulnerability>
+<Vulnerability xmlns="http://www.icasi.org/CVRF/schema/vuln/1.1" Ordinal="67096">
+<Title>CVE-2014-0005</Title>
+<Notes><Note Type="Description" Ordinal="1">** RESERVED **
+This candidate has been reserved by an organization or individual that
+will use it when announcing a new security problem.  When the
+candidate has been publicized, the details for this candidate will be
+provided.
+</Note>
+</Notes>
+<CVE>CVE-2014-0005</CVE>
+</Vulnerability>
+<Vulnerability xmlns="http://www.icasi.org/CVRF/schema/vuln/1.1" Ordinal="67097">
+<Title>CVE-2014-0006</Title>
+<Notes><Note Type="Description" Ordinal="1">The TempURL middleware in OpenStack Object Storage (Swift) 1.4.6
+through 1.8.0, 1.9.0 through 1.10.0, and 1.11.0 allows remote
+attackers to obtain secret URLs by leveraging an object name and a
+timing side-channel attack.
+</Note>
+<Note Type="Other" Ordinal="2" Title="Published">2014-01-22</Note>
+<Note Type="Other" Ordinal="3" Title="Modified">2014-03-05</Note>
+</Notes>
+<CVE>CVE-2014-0006</CVE>
+	<References>
+	<Reference>
+		<URL>http://www.openwall.com/lists/oss-security/2014/01/17/5</URL>
+		<Description>MLIST:[oss-security] 20140117 [OSSA 2014-002] Swift TempURL timing attack (CVE-2014-0006)</Description>
+	</Reference>
+	<Reference>
+		<URL>https://bugs.launchpad.net/swift/+bug/1265665</URL>
+		<Description>CONFIRM:https://bugs.launchpad.net/swift/+bug/1265665</Description>
+	</Reference>
+	<Reference>
+		<URL>http://rhn.redhat.com/errata/RHSA-2014-0232.html</URL>
+		<Description>REDHAT:RHSA-2014:0232</Description>
+	</Reference>
+</References>
+</Vulnerability>
+</cvrfdoc>

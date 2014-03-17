@@ -11,12 +11,19 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <slf4j.version>1.6.4</slf4j.version>
-	<cvrf.knowledge.version>1.0.0-SNAPSHOT</cvrf.knowledge.version>
+        <cvrf.knowledge.version>1.0.0-SNAPSHOT</cvrf.knowledge.version>
+        <commons-cli.version>1.2</commons-cli.version>
+        <rxjava-core.version>0.17.1</rxjava-core.version>
+        <jersey.version>1.11</jersey.version>
+        <spring.version>3.2.4.RELEASE</spring.version>
+        <gem.version>0.12.0-SNAPSHOT</gem.version>
     </properties>
 
     <modules>
         <module>model</module>
         <module>tool</module>
+	<module>store</module>
+	<module>web</module>
     </modules>
 
     <dependencies>
