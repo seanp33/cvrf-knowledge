@@ -96,6 +96,11 @@
             <artifactId>gem-rya-store</artifactId>
             <version>${gem.version}</version>
         </dependency>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>cvrf-knowledge-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -59,6 +59,20 @@
         <constructor-arg ref="entityIndexer" index="1"/>
     </bean>
 
+    <bean name="bootstrap" class="cvrfknow.web.Bootstrap">
+        <constructor-arg>
+            <list>
+                <value>"/allitems-cvrf-year-2008.xml"</value>
+                <value>"/allitems-cvrf-year-2009.xml"</value>
+                <value>"/allitems-cvrf-year-2010.xml"</value>
+                <value>"/allitems-cvrf-year-2011.xml"</value>
+                <value>"/allitems-cvrf-year-2012.xml"</value>
+                <value>"/allitems-cvrf-year-2013.xml"</value>
+                <value>"/allitems-cvrf-year-2014.xml"</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
     <context:component-scan base-package="cvrfknow.web"/>
 
 </beans>
