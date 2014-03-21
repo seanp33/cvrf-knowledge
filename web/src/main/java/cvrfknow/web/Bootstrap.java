@@ -5,8 +5,12 @@ import cvrfknow.model.EntityGraphAssembler;
 import gem.domain.Entity;
 import gem.service.EntityService;
 import gem.service.exception.EntityRejectedException;
+import gem.support.datatype.GemTypeContext;
+import gem.support.datatype.mapping.impl.JsonGemTypeMappingsLoader;
 import org.icasi.cvrf.schema.cvrf.Cvrfdoc;
 import org.icasi.cvrf.schema.vuln.Vulnerability;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +19,8 @@ import java.util.List;
 
 
 public class Bootstrap {
+
+    private static final Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 
     @Autowired(required = true)
     private EntityService entityService;
@@ -27,8 +33,10 @@ public class Bootstrap {
 
     @PostConstruct
     public void init() throws Exception {
+        GemTypeContext ctx = GemTypeContext.getInstance();
+        ctx.loadMappings(new JsonGemTypeMappingsLoader("/cvrf-gem-types.json"));
         for (String seed : cvrfSeed) {
-            InputStream is = this.getClass().getResourceAsStream(seed);
+            InputStream is = Bootstrap.class.getResourceAsStream(seed);
             if (is != null) {
                 Cvrfdoc doc = CvrfdocLoader.loadCvrfdoc(is);
                 for (Vulnerability v : doc.getVulnerability()) {
@@ -39,6 +47,7 @@ public class Bootstrap {
     }
 
     private void saveEntities(List<Entity> entities) throws EntityRejectedException {
+
         entityService.saveObjects(entities.iterator(), false);
     }
 }

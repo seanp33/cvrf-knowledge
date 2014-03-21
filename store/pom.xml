@@ -23,6 +23,11 @@
             <artifactId>cvrf-knowledge-model</artifactId>
             <version>${cvrf.knowledge.version}</version>
         </dependency>
+        <dependency>
+            <groupId>gem</groupId>
+            <artifactId>gem-support</artifactId>
+            <version>${gem.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

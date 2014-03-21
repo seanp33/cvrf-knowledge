@@ -147,8 +147,8 @@ public class EntityGraphAssembler {
         for (Vulnerability.Threats.Threat threat : threats) {
             Entity e = new Entity(UUID.randomUUID().toString(), getClassType(threat));
             safeAttribute(DATE, threat.getDate(), U, e);
-            safeAttribute(DESCRIPTION, threat.getDescription(), U, e);
-            safeAttribute(TYPE, threat.getType(), U, e);
+            safeAttribute(DESCRIPTION, threat.getDescription().getValue(), U, e);
+            safeAttribute(TYPE, threat.getType().value(), U, e);
             safeAttributes(GROUP_ID, threat.getGroupID(), U, e);
             safeAttributes(PRODUCT_ID, threat.getProductID(), U, e);
             safeRelationship(THREAT, e, U, root);
@@ -194,19 +194,19 @@ public class EntityGraphAssembler {
 
     public static void safeAttributes(String name, List values, String vis, Entity e) {
         for (Object value : values) {
-            if (value instanceof LocalizedString) {
-                safeAttribute(name, ((LocalizedString) value).getValue(), vis, e);
-            } else if (value.getClass().isEnum()) {
-                safeAttribute(name, ((Enum) value).name(), vis, e);
-            } else {
-                safeAttribute(name, value, vis, e);
-            }
+            safeAttribute(name, value, vis, e);
         }
     }
 
     public static void safeAttribute(String name, Object value, String vis, Entity e) {
         if (value != null) {
-            e.addAttribute(new Attribute(name, value, vis));
+            if (value instanceof LocalizedString) {
+                e.addAttribute(new Attribute(name, ((LocalizedString) value).getValue(), vis));
+            } else if (value.getClass().isEnum()) {
+                e.addAttribute(new Attribute(name, ((Enum) value).name(), vis));
+            } else {
+                e.addAttribute(new Attribute(name, value, vis));
+            }
         }
     }
 
