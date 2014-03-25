@@ -1,4 +1,5 @@
 import org.icasi.cvrf.schema.cvrf.Cvrfdoc;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.xml.bind.JAXBContext;
@@ -11,7 +12,7 @@ public class JaxbTest {
     public void testit() {
         try {
             JAXBContext context = JAXBContext.newInstance(Cvrfdoc.class);
-            Cvrfdoc doc = (Cvrfdoc) context.createUnmarshaller().unmarshal(new File("/Users/smonaghan/Desktop/cvrf-data/allitems-cvrf-year-2014.xml"));
+            Cvrfdoc doc = (Cvrfdoc) context.createUnmarshaller().unmarshal(new File("/Development/projects/cvrf-knowledge/web/src/main/resources/allitems-cvrf-year-2014.xml"));
             System.out.println("Vulnerabilities in 2014: " + doc.getVulnerability().size());
         } catch (JAXBException e) {
             // if things went wrong...

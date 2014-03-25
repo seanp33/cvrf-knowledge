@@ -1,0 +1,14 @@
+[
+  {
+    aliases: ["http://www.w3.org/2001/XMLSchema#biginteger"],
+    typeClass: "java.math.BigInteger",
+    shortName: "biginteger",
+    resolverClass: "cvrfknow.store.gem.resolver.BigIntTypeResolver"
+  },
+  {
+    aliases: ["http://www.icasi.org/CVRF/schema/common/1.1#LocalizedString"],
+    typeClass: "org.icasi.cvrf.schema.common.LocalizedString",
+    shortName: "LocalizedString",
+    resolverClass: "cvrfknow.store.gem.resolver.LocalizedStringResolver"
+  }
+]
