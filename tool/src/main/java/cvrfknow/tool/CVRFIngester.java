@@ -1,13 +1,12 @@
 package cvrfknow.tool;
 
 import java.io.FileInputStream;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
 
-import gem.index.accumulo.AccumuloIndexStore;
-import gem.index.rya.SlidingWindowEntityIndexer;
-import gem.service.IndexEntityService;
 import mvm.rya.accumulo.AccumuloRyaDAO;
 import mvm.rya.api.persist.RyaDAO;
 
@@ -22,12 +21,15 @@ import org.icasi.cvrf.schema.cvrf.Cvrfdoc;
 import org.icasi.cvrf.schema.vuln.Vulnerability;
 
 import cvrfknow.model.EntityGraphAssembler;
+import gem.domain.Attribute;
 import gem.domain.Entity;
+import gem.domain.Relationship;
+import gem.index.accumulo.AccumuloIndexStore;
+import gem.index.rya.SlidingWindowEntityIndexer;
 import gem.rya.store.service.impl.RyaEntityService;
 import gem.service.EntityService;
+import gem.service.IndexEntityService;
 import gem.service.impl.MockEntityMutationHook;
-import gem.support.datatype.GemTypeContext;
-import gem.support.datatype.mapping.impl.JsonGemTypeMappingsLoader;
 
 public class CVRFIngester {
 
@@ -75,9 +77,6 @@ public class CVRFIngester {
         accumuloIndexStore = new AccumuloIndexStore(connector);
         slidingWindowEntityIndexer = new SlidingWindowEntityIndexer(accumuloIndexStore);
         indexEntityService = new IndexEntityService(baseEntityService, slidingWindowEntityIndexer);
-
-        GemTypeContext ctx = GemTypeContext.getInstance();
-        ctx.loadMappings(new JsonGemTypeMappingsLoader("cvrf-gem-types.json"));
     }
 
     protected void ingest(String filename) throws Exception {
@@ -88,8 +87,27 @@ public class CVRFIngester {
         int count = 0;
         for (Vulnerability v : doc.getVulnerability()) {
             List<Entity> entities = EntityGraphAssembler.assemble(v);
+            negateValues(entities);
             System.out.print("\rIngesting Vulnerability entity graph [" + (++count) + " of " + total + "] (" + entities.size() + ") entities");
             indexEntityService.saveObjects(entities.iterator(), false);
+        }
+    }
+
+    private void negateValues(List<Entity> entities){
+        for(Entity e : entities){
+            Collection<Set<Attribute>> attributes = e.getAttributes().values();
+            for(Set<Attribute> attributeSet : attributes){
+                for(Attribute attr : attributeSet){
+                    attr.setValue("an attribute");
+                }
+            }
+
+            Collection<Set<Relationship>> relationships = e.getRelationships().values();
+            for(Set<Relationship> relationshipSet : relationships){
+                for(Relationship rel : relationshipSet){
+                    rel.setValue("a relationship");
+                }
+            }
         }
     }
 

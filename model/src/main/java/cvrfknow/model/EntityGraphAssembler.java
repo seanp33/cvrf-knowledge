@@ -6,6 +6,7 @@ import gem.domain.Relationship;
 import org.icasi.cvrf.schema.common.LocalizedString;
 import org.icasi.cvrf.schema.vuln.Vulnerability;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -201,9 +202,11 @@ public class EntityGraphAssembler {
     public static void safeAttribute(String name, Object value, String vis, Entity e) {
         if (value != null) {
             if (value instanceof LocalizedString) {
-                e.addAttribute(new Attribute(name, ((LocalizedString) value).getValue(), vis));
+                e.addAttribute(new Attribute(name, ((LocalizedString) value).getValue().toString(), vis));
             } else if (value.getClass().isEnum()) {
                 e.addAttribute(new Attribute(name, ((Enum) value).name(), vis));
+            } else if(value instanceof BigInteger) {
+                e.addAttribute(new Attribute(name, ((BigInteger) value).longValue(), vis));
             } else {
                 e.addAttribute(new Attribute(name, value, vis));
             }
