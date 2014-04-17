@@ -16,7 +16,7 @@
         <rxjava-core.version>0.17.1</rxjava-core.version>
         <jersey.version>1.11</jersey.version>
         <spring.version>3.2.4.RELEASE</spring.version>
-        <gem.version>0.12.0-SNAPSHOT</gem.version>
+        <gem.version>0.12.1-SNAPSHOT</gem.version>
         <accumulo.version>1.5.0</accumulo.version>
         <zookeeper.version>3.4.5-cdh4.5.0</zookeeper.version>
         <maven-shade-plugin.version>1.7.1</maven-shade-plugin.version>
