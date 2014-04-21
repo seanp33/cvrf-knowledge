@@ -87,27 +87,8 @@ public class CVRFIngester {
         int count = 0;
         for (Vulnerability v : doc.getVulnerability()) {
             List<Entity> entities = EntityGraphAssembler.assemble(v);
-            negateValues(entities);
             System.out.print("\rIngesting Vulnerability entity graph [" + (++count) + " of " + total + "] (" + entities.size() + ") entities");
             indexEntityService.saveObjects(entities.iterator(), false);
-        }
-    }
-
-    private void negateValues(List<Entity> entities){
-        for(Entity e : entities){
-            Collection<Set<Attribute>> attributes = e.getAttributes().values();
-            for(Set<Attribute> attributeSet : attributes){
-                for(Attribute attr : attributeSet){
-                    attr.setValue("an attribute");
-                }
-            }
-
-            Collection<Set<Relationship>> relationships = e.getRelationships().values();
-            for(Set<Relationship> relationshipSet : relationships){
-                for(Relationship rel : relationshipSet){
-                    rel.setValue("a relationship");
-                }
-            }
         }
     }
 
