@@ -1,6 +1,7 @@
 package cvrfknow.tool;
 
 import java.io.FileInputStream;
+import java.net.InetAddress;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -12,6 +13,9 @@ import mvm.rya.api.persist.RyaDAO;
 
 import org.apache.accumulo.core.client.Connector;
 import org.apache.accumulo.core.client.ZooKeeperInstance;
+import org.apache.accumulo.core.trace.DistributedTrace;
+import org.apache.accumulo.fate.zookeeper.ZooReader;
+import org.apache.accumulo.trace.instrument.Trace;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.OptionBuilder;
@@ -77,6 +81,8 @@ public class CVRFIngester {
         accumuloIndexStore = new AccumuloIndexStore(connector);
         slidingWindowEntityIndexer = new SlidingWindowEntityIndexer(accumuloIndexStore);
         indexEntityService = new IndexEntityService(baseEntityService, slidingWindowEntityIndexer);
+
+        DistributedTrace.enable(instance, new ZooReader(instance.getZooKeepers(), 1000), CVRFIngester.class.getName(), InetAddress.getLocalHost().getHostAddress());
     }
 
     protected void ingest(String filename) throws Exception {
@@ -88,7 +94,10 @@ public class CVRFIngester {
         for (Vulnerability v : doc.getVulnerability()) {
             List<Entity> entities = EntityGraphAssembler.assemble(v);
             System.out.print("\rIngesting Vulnerability entity graph [" + (++count) + " of " + total + "] (" + entities.size() + ") entities");
+            Trace.on("Entity Graph Write : " + count + " : " + entities.size());
+            System.out.println("TraceID: " + Long.toHexString(Trace.currentTrace().traceId()));
             indexEntityService.saveObjects(entities.iterator(), false);
+            Trace.offNoFlush();
         }
     }
 
@@ -105,25 +114,30 @@ public class CVRFIngester {
                                 isRequired().
                                 withArgName("CVRL").
                                 withLongOpt("cvrl-file").
-                                create(PARAM_CVRF_FILE))
+                                create(PARAM_CVRF_FILE)
+                )
                 .addOption(
                         OptionBuilder.withDescription("Comma separated list of zookeepers.").
                                 hasArg().
                                 withArgName("ZOOKEEPERS").
                                 withLongOpt("zookeepers").
-                                create(PARAM_ZOOKEEPERS))
+                                create(PARAM_ZOOKEEPERS)
+                )
                 .addOption(
                         OptionBuilder.withDescription("Name of your cloudbase instance.").
                                 hasArg().
                                 withArgName("INSTANCE").
                                 withLongOpt("cloudbase-instance").
-                                create(PARAM_INSTANCE))
+                                create(PARAM_INSTANCE)
+                )
                 .addOption(
                         OptionBuilder.withDescription("Username to use when connecting to cloudbase.").hasArg().withArgName("USER")
-                                .withLongOpt("cloudbase-username").create(PARAM_USERNAME))
+                                .withLongOpt("cloudbase-username").create(PARAM_USERNAME)
+                )
                 .addOption(
                         OptionBuilder.withDescription("Password to use when connecting to cloudbase.").hasArg().withArgName("PASSWORD")
-                                .withLongOpt("cloudbase-password").create(PARAM_PASSWORD));
+                                .withLongOpt("cloudbase-password").create(PARAM_PASSWORD)
+                );
 
     }
 
