@@ -20,14 +20,40 @@
         <accumulo.version>1.5.0</accumulo.version>
         <zookeeper.version>3.4.5-cdh4.5.0</zookeeper.version>
         <maven-shade-plugin.version>1.7.1</maven-shade-plugin.version>
+        <lucene.version>4.8.0</lucene.version>
     </properties>
 
     <modules>
         <module>model</module>
         <module>tool</module>
-	<module>store</module>
-	<module>web</module>
+        <module>store</module>
+        <module>web</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>gem</groupId>
+                <artifactId>gem-support</artifactId>
+                <version>${gem.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>gem</groupId>
+                <artifactId>gem-rya-store</artifactId>
+                <version>${gem.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-core</artifactId>
+                <version>${lucene.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-analyzers-common</artifactId>
+                <version>${lucene.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- logging -->

@@ -190,7 +190,7 @@ public class EntityGraphAssembler {
     }
 
     public static String getClassType(Object o) {
-        return o.getClass().getCanonicalName();
+        return o.getClass().getSimpleName();
     }
 
     public static void safeAttributes(String name, List values, String vis, Entity e) {

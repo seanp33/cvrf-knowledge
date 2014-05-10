@@ -94,8 +94,8 @@ public class CVRFIngester {
         for (Vulnerability v : doc.getVulnerability()) {
             List<Entity> entities = EntityGraphAssembler.assemble(v);
             System.out.print("\rIngesting Vulnerability entity graph [" + (++count) + " of " + total + "] (" + entities.size() + ") entities");
-            Trace.on("Entity Graph Write : " + count + " : " + entities.size());
-            System.out.println("TraceID: " + Long.toHexString(Trace.currentTrace().traceId()));
+            //Trace.on("Entity Graph Write : " + count + " : " + entities.size());
+            //System.out.println("TraceID: " + Long.toHexString(Trace.currentTrace().traceId()));
             indexEntityService.saveObjects(entities.iterator(), false);
             Trace.offNoFlush();
         }
